@@ -1,0 +1,227 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .dashboard-container {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    width: 90%;
+    max-width: 800px; /* Wider to accommodate side-by-side sections */
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  
+  .charts {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .chart-section {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .chart-section p {
+    color: #cccccc;
+    margin-bottom: 20px;
+  }
+  
+  .chart-label, .metric-label {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .chart-label span, .metric-label span {
+    font-size: 1em;
+    color: #cccccc;
+  }
+  
+  .chart-label .percentage, .metric-label .value {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #28a745;
+  }
+  
+  .metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .metric canvas {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  .tips {
+    margin-top: 30px;
+    text-align: left;
+  }
+  
+  .tips h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .tips ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .tips li {
+    margin-bottom: 8px;
+    color: #cccccc;
+  }
+  
+  /* Existing styles for index.html */
+  .container {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .logo {
+    height: 30px;
+    margin-right: 10px;
+    animation: spin 3s infinite linear;
+  }
+  
+  @keyframes spin {
+    100% { transform: rotate(360deg); }
+  }
+  
+  .prediction-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    text-align: left;
+  }
+  
+  input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+  }
+  
+  button {
+    background-color: #28a745;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  .result {
+    margin-top: 20px;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  .prediction-value {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  .progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    height: 20px;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+  
+  .progress {
+    background: linear-gradient(90deg, #28a745, #34d058);
+    height: 100%;
+    transition: width 1s ease-in-out;
+  }
+  
+  .motivational-quote {
+    font-style: italic;
+    color: #cccccc;
+    margin: 10px 0;
+  }
+  
+  .links {
+    margin-top: 10px;
+  }
+  
+  .links a {
+    color: #28a745;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+  
+  .error {
+    margin-top: 20px;
+    color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+  }

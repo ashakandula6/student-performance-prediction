@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Performance Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      Student Performance Prediction
+    </h1>
+    <form action="/predict" method="POST" class="prediction-form">
+      <label>Name:</label>
+      <input type="text" name="name" required value="{{ request.form.get('name', '') }}">
+      <label>Student ID:</label>
+      <input type="text" name="student_id" required value="{{ request.form.get('student_id', '') }}">
+      <label>Department:</label>
+      <input type="text" name="department" required value="{{ request.form.get('department', '') }}">
+      <label>Study Hours:</label>
+      <input type="number" name="study_hours" min="0" required value="{{ request.form.get('study_hours', '') }}">
+      <label>Attendance (%):</label>
+      <input type="number" name="attendance" min="0" max="100" required value="{{ request.form.get('attendance', '') }}">
+      <label>Assignments Completed:</label>
+      <input type="number" name="assignments" min="0" required value="{{ request.form.get('assignments', '') }}">
+      <button type="submit">Predict Performance</button>
+    </form>
+
+    {% if prediction %}
+      <div class="result">
+        <h3>Predicted Performance: <span class="prediction-value">{{ prediction }}%</span></h3>
+        <div class="progress-bar">
+          <div class="progress" style="width: {{ prediction }}%;"></div>
+        </div>
+        <p class="motivational-quote">"{{ quote }}"</p>
+        <div class="links">
+          <a href="{{ url_for('download_report') }}" class="download-link">Download Report (PDF)</a> | 
+          <a href="{{ url_for('dashboard') }}">Visual Analytics Dashboard</a>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if error %}
+      <div class="error">
+        <p>{{ error }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

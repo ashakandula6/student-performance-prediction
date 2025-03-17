@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Performance Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Student Performance Dashboard</h1>
+    <div class="charts">
+      <div class="chart-section">
+        <h2>Predicted Performance</h2>
+        <p>Overall predicted performance based on your inputs.</p>
+        <canvas id="predictionChart" width="200" height="200"></canvas>
+        <div class="chart-label">
+          <span>Predicted Performance</span>
+          <span class="percentage">{{ prediction }}%</span>
+        </div>
+      </div>
+      <div class="chart-section">
+        <h2>Performance Metrics</h2>
+        <div class="metrics">
+          <div class="metric">
+            <canvas id="studyHoursChart" width="100" height="100"></canvas>
+            <div class="metric-label">
+              <span>Study Hours</span>
+              <span class="value">{{ study_hours }}</span>
+            </div>
+          </div>
+          <div class="metric">
+            <canvas id="attendanceChart" width="100" height="100"></canvas>
+            <div class="metric-label">
+              <span>Attendance</span>
+              <span class="value">{{ attendance }}%</span>
+            </div>
+          </div>
+          <div class="metric">
+            <canvas id="assignmentsChart" width="100" height="100"></canvas>
+            <div class="metric-label">
+              <span>Assignments Completed</span>
+              <span class="value">{{ assignments }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tips">
+      <h3>Improvement Tips:</h3>
+      <ul>
+        {% for tip in tips %}
+          <li>{{ tip }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <script>
+    // Predicted Performance Chart
+    const predictionCtx = document.getElementById('predictionChart').getContext('2d');
+    new Chart(predictionCtx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [{{ prediction }}, 100 - {{ prediction }}],
+          backgroundColor: ['#28a745', '#e0e0e0'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        cutout: '70%',
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+
+    // Study Hours Chart
+    const studyHoursCtx = document.getElementById('studyHoursChart').getContext('2d');
+    new Chart(studyHoursCtx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [{{ scaled_study_hours }}, 100 - {{ scaled_study_hours }}],
+          backgroundColor: ['#28a745', '#e0e0e0'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        cutout: '70%',
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+
+    // Attendance Chart
+    const attendanceCtx = document.getElementById('attendanceChart').getContext('2d');
+    new Chart(attendanceCtx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [{{ scaled_attendance }}, 100 - {{ scaled_attendance }}],
+          backgroundColor: ['#28a745', '#e0e0e0'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        cutout: '70%',
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+
+    // Assignments Chart
+    const assignmentsCtx = document.getElementById('assignmentsChart').getContext('2d');
+    new Chart(assignmentsCtx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [{{ scaled_assignments }}, 100 - {{ scaled_assignments }}],
+          backgroundColor: ['#28a745', '#e0e0e0'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        cutout: '70%',
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
